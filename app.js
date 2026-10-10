@@ -196,7 +196,17 @@
       currentMonthTitleEl.textContent = MONTH_NAMES[currentMonth] + ' ' + currentYear;
     }
 
+    var monthSessions = getMonthSessions();
     var filtered = getFilteredSessions();
+
+    var statMonthCount = document.getElementById('statMonthCount');
+    var statMonthLabel = document.getElementById('statMonthLabel');
+    if (statMonthCount) {
+      statMonthCount.textContent = monthSessions.length + (monthSessions.length > 1 ? ' séances planifiées' : ' séance planifiée');
+    }
+    if (statMonthLabel) {
+      statMonthLabel.textContent = MONTH_NAMES[currentMonth] + ' ' + currentYear;
+    }
 
     if (scheduleCountEl) {
       scheduleCountEl.textContent = filtered.length + ' séance(s) programmée(s)';
@@ -371,6 +381,19 @@
     if (addSessionBtn) {
       addSessionBtn.addEventListener('click', function () {
         openSessionForm(null);
+      });
+    }
+
+    var adminQuickBtn = document.getElementById('adminQuickBtn');
+    if (adminQuickBtn) {
+      adminQuickBtn.addEventListener('click', function () {
+        if (!isAdmin) {
+          openModal(adminModal);
+          var pwd = document.getElementById('adminPassword');
+          if (pwd) { pwd.value = ''; pwd.focus(); }
+        } else {
+          openSessionForm(null);
+        }
       });
     }
 
