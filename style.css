@@ -340,10 +340,97 @@ body {
   box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.2);
 }
 
-/* ==================== PIED DE PAGE ==================== */
-footer {
-  background: var(--navy-dark) !important;
-  border-top: 2px solid var(--liturgical-gold);
+/* ==================== STYLES RESPONSIVES MOBILES AVANCÉS ==================== */
+.level-filter-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  gap: 6px;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.level-filter-scroll::-webkit-scrollbar {
+  display: none;
+}
+.level-filter-scroll .level-chip {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Cartes ergonomiques pour smartphone */
+.mobile-session-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border-left-width: 5px !important;
+}
+.mobile-session-card:active {
+  transform: scale(0.99);
+}
+
+.border-level-postulant { border-left-color: var(--color-postulant) !important; }
+.border-level-samuel { border-left-color: var(--color-samuel) !important; }
+.border-level-tarcisius { border-left-color: var(--color-tarcisius) !important; }
+.border-level-augustin { border-left-color: var(--color-augustin) !important; }
+.border-level-tous { border-left-color: var(--color-tous) !important; }
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: #0b1329;
+    padding: 16px;
+    border-radius: 14px;
+    margin-top: 10px;
+    border: 1px solid rgba(197, 155, 39, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .navbar-nav .nav-link {
+    padding: 10px 14px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .navbar-action-group {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px !important;
+    width: 100%;
+    margin-top: 14px;
+  }
+
+  .navbar-action-group .btn {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-banner {
+    padding: 1.25rem !important;
+    border-radius: 12px;
+  }
+
+  .hero-banner h1 {
+    font-size: 1.45rem !important;
+  }
+
+  .hero-tag {
+    font-size: 0.72rem;
+    padding: 3px 10px;
+  }
+
+  .card-soft {
+    border-radius: 12px;
+  }
+
+  .signature-box {
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .handwritten-signature {
+    font-size: 2.2rem;
+  }
 }
 
 /* ==================== STYLES D'IMPRESSION A4 OFFICIELLE & PDF ==================== */
@@ -395,8 +482,14 @@ footer {
   .modal,
   .toast-container,
   footer,
+  #scheduleMobileContainer,
   #planning-section .card-header {
     display: none !important;
+  }
+
+  #scheduleTableWrapper {
+    display: block !important;
+    overflow: visible !important;
   }
 
   .container,

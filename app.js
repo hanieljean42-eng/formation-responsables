@@ -44,6 +44,7 @@
 
   // Éléments du DOM
   var scheduleBodyEl = document.getElementById('scheduleBody');
+  var scheduleMobileContainer = document.getElementById('scheduleMobileContainer');
   var currentMonthTitleEl = document.getElementById('currentMonthTitle');
   var prevMonthBtn = document.getElementById('prevMonthBtn');
   var nextMonthBtn = document.getElementById('nextMonthBtn');
@@ -220,32 +221,59 @@
     if (!scheduleBodyEl) return;
 
     if (filtered.length === 0) {
-      scheduleBodyEl.innerHTML = 
-        '<tr><td colspan="7" class="text-center py-5">' +
-          '<div class="display-6 text-muted mb-3"><i class="bi bi-calendar-x"></i></div>' +
-          '<h5 class="fw-bold text-dark">Aucune formation programmée pour ' + MONTH_NAMES[currentMonth] + ' ' + currentYear + '</h5>' +
-          '<p class="text-muted small mb-3">Le planning de ce mois est actuellement vierge. Vous pouvez ajouter les samedis de formation au fur et à mesure.</p>' +
-          (isAdmin ? 
-            '<button type="button" class="btn btn-gold btn-sm px-3" id="emptyAddBtn"><i class="bi bi-plus-circle me-1"></i> Programmer une séance pour ' + MONTH_NAMES[currentMonth] + '</button>' : 
-            '<span class="badge bg-light text-secondary border">Connectez-vous à l\'Espace Responsable pour saisir les dates.</span>') +
-        '</td></tr>';
+      if (scheduleBodyEl) {
+        scheduleBodyEl.innerHTML = 
+          '<tr><td colspan="7" class="text-center py-5">' +
+            '<div class="display-6 text-muted mb-3"><i class="bi bi-calendar-x"></i></div>' +
+            '<h5 class="fw-bold text-dark">Aucune formation programmée pour ' + MONTH_NAMES[currentMonth] + ' ' + currentYear + '</h5>' +
+            '<p class="text-muted small mb-3">Le planning de ce mois est actuellement vierge. Vous pouvez ajouter les samedis de formation au fur et à mesure.</p>' +
+            (isAdmin ? 
+              '<button type="button" class="btn btn-gold btn-sm px-3" id="emptyAddBtn"><i class="bi bi-plus-circle me-1"></i> Programmer une séance pour ' + MONTH_NAMES[currentMonth] + '</button>' : 
+              '<span class="badge bg-light text-secondary border">Connectez-vous à l\'Espace Responsable pour saisir les dates.</span>') +
+          '</td></tr>';
 
-      var emptyAdd = document.getElementById('emptyAddBtn');
-      if (emptyAdd) {
-        emptyAdd.onclick = function () {
-          openSessionForm(null);
-        };
+        var emptyAdd = document.getElementById('emptyAddBtn');
+        if (emptyAdd) {
+          emptyAdd.onclick = function () {
+            openSessionForm(null);
+          };
+        }
       }
+
+      if (scheduleMobileContainer) {
+        scheduleMobileContainer.innerHTML = 
+          '<div class="text-center py-4 px-2">' +
+            '<div class="display-6 text-muted mb-2"><i class="bi bi-calendar-x"></i></div>' +
+            '<h6 class="fw-bold text-dark">Aucune formation programmée</h6>' +
+            '<p class="text-muted small mb-3">Le planning de ' + MONTH_NAMES[currentMonth] + ' ' + currentYear + ' est actuellement vierge.</p>' +
+            (isAdmin ? 
+              '<button type="button" class="btn btn-gold btn-sm w-100" id="emptyAddMobileBtn"><i class="bi bi-plus-circle me-1"></i> Programmer une séance</button>' : 
+              '<span class="badge bg-light text-secondary border small">Espace Responsable pour planifier.</span>') +
+          '</div>';
+
+        var emptyAddMobile = document.getElementById('emptyAddMobileBtn');
+        if (emptyAddMobile) {
+          emptyAddMobile.onclick = function () {
+            openSessionForm(null);
+          };
+        }
+      }
+
       renderTrainersList();
       return;
     }
 
     var html = '';
+    var mobileHtml = '';
+
     filtered.forEach(function (s) {
       var d = new Date(s.date);
       var dateFormatted = d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'short' });
+      var dateFull = d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
       var badgeClass = getBadgeClassForLevel(s.level);
+      var lvlBorderClass = 'border-level-' + (s.level || 'tous').toLowerCase();
 
+      // Vue Tableau (Desktop & Impression)
       html += 
         '<tr>' +
           '<td class="col-date fw-bold text-dark"><i class="bi bi-calendar-event text-secondary me-1"></i>' + capitalizeFirst(dateFormatted) + '</td>' +
@@ -266,9 +294,33 @@
               '<button class="btn btn-outline-success btn-sm share-single-btn" data-id="' + s.id + '" title="Partager sur WhatsApp"><i class="bi bi-whatsapp"></i></button>') +
           '</td>' +
         '</tr>';
+
+      // Vue Cartes (Mobile)
+      mobileHtml += 
+        '<div class="mobile-session-card ' + lvlBorderClass + ' mb-3 p-3 bg-white rounded-3 shadow-sm border">' +
+          '<div class="d-flex align-items-center justify-content-between mb-2">' +
+            '<div class="fw-bold text-dark small"><i class="bi bi-calendar-event text-warning me-1"></i>' + capitalizeFirst(dateFull) + '</div>' +
+            '<span class="' + badgeClass + '">' + escapeHtml(s.level) + '</span>' +
+          '</div>' +
+          '<h6 class="fw-bold text-dark mb-1 fs-6">' + escapeHtml(s.topic) + '</h6>' +
+          (s.objectives ? '<div class="small text-muted mb-2"><i class="bi bi-info-circle me-1"></i>' + escapeHtml(s.objectives) + '</div>' : '') +
+          '<div class="d-flex flex-wrap gap-2 small text-muted pt-2 border-top mb-3">' +
+            '<div class="bg-light px-2 py-1 rounded border text-nowrap"><i class="bi bi-clock me-1 text-secondary"></i>' + escapeHtml(s.startTime) + ' - ' + escapeHtml(s.endTime) + '</div>' +
+            '<div class="bg-light px-2 py-1 rounded border text-nowrap"><i class="bi bi-person-fill me-1 text-secondary"></i>' + escapeHtml(s.trainer) + '</div>' +
+            '<div class="bg-light px-2 py-1 rounded border text-nowrap"><i class="bi bi-geo-alt-fill text-danger me-1"></i>' + escapeHtml(s.location) + '</div>' +
+          '</div>' +
+          '<div class="d-flex align-items-center gap-2">' +
+            (isAdmin ? 
+              '<button class="btn btn-sm btn-outline-secondary flex-fill edit-session-btn" data-id="' + s.id + '"><i class="bi bi-pencil me-1"></i>Modifier</button>' +
+              '<button class="btn btn-sm btn-outline-danger flex-fill delete-session-btn" data-id="' + s.id + '"><i class="bi bi-trash me-1"></i>Supprimer</button>' : 
+              '<button class="btn btn-sm btn-success w-100 share-single-btn" data-id="' + s.id + '"><i class="bi bi-whatsapp me-1"></i>Partager sur WhatsApp</button>') +
+          '</div>' +
+        '</div>';
     });
 
-    scheduleBodyEl.innerHTML = html;
+    if (scheduleBodyEl) scheduleBodyEl.innerHTML = html;
+    if (scheduleMobileContainer) scheduleMobileContainer.innerHTML = mobileHtml;
+
     renderTrainersList();
   }
 

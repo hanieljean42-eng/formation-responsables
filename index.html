@@ -221,34 +221,34 @@
 
     <!-- ==================== SÉLECTEUR DE MOIS ==================== -->
     <div id="monthNavContainer" class="card card-soft mb-3">
-      <div class="card-body p-3 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
-        <div class="d-flex align-items-center gap-2">
-          <button id="prevMonthBtn" class="btn btn-outline-secondary btn-sm" type="button">
-            <i class="bi bi-chevron-left me-1"></i>Mois précédent
+      <div class="card-body p-2 p-md-3 d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 gap-md-3">
+        <div class="d-flex align-items-center justify-content-between w-100 w-sm-auto gap-2">
+          <button id="prevMonthBtn" class="btn btn-outline-secondary btn-sm flex-fill flex-sm-grow-0" type="button">
+            <i class="bi bi-chevron-left me-1"></i><span class="d-none d-sm-inline">Mois </span>Préc.
           </button>
-          <h3 id="currentMonthTitle" class="h5 fw-bold font-cinzel text-dark mb-0 px-3 text-center" style="min-width: 180px;">
+          <h3 id="currentMonthTitle" class="h6 h5-sm fw-bold font-cinzel text-dark mb-0 px-2 px-md-3 text-center text-nowrap">
             Octobre 2026
           </h3>
-          <button id="nextMonthBtn" class="btn btn-outline-secondary btn-sm" type="button">
-            Mois suivant<i class="bi bi-chevron-right ms-1"></i>
+          <button id="nextMonthBtn" class="btn btn-outline-secondary btn-sm flex-fill flex-sm-grow-0" type="button">
+            Suiv.<span class="d-none d-sm-inline"> Mois</span><i class="bi bi-chevron-right ms-1"></i>
           </button>
         </div>
 
-        <div class="d-flex align-items-center gap-2">
+        <div class="d-flex align-items-center w-100 w-sm-auto justify-content-end gap-2 pt-2 pt-sm-0 border-top border-sm-0">
           <label for="monthSelect" class="small fw-bold text-muted text-nowrap mb-0">
             <i class="bi bi-calendar-event me-1"></i>Accès rapide :
           </label>
-          <select id="monthSelect" class="form-select form-select-sm" style="width: auto;">
+          <select id="monthSelect" class="form-select form-select-sm w-100 w-sm-auto" style="min-width: 140px;">
             <!-- Rempli dynamiquement -->
           </select>
         </div>
       </div>
     </div>
 
-    <!-- ==================== FILTRES DES NIVEAUX ==================== -->
+    <!-- ==================== FILTRES DES NIVEAUX (DÉFILEMENT MOBILE TACTILE) ==================== -->
     <div id="levelFilterContainer" class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
-      <div class="d-flex align-items-center gap-1 flex-wrap">
-        <span class="small fw-bold text-muted me-1"><i class="bi bi-funnel-fill me-1"></i>FILTRE :</span>
+      <div class="level-filter-scroll d-flex align-items-center gap-1">
+        <span class="small fw-bold text-muted me-1 flex-shrink-0"><i class="bi bi-funnel-fill me-1"></i>FILTRE :</span>
         <button type="button" class="btn btn-sm btn-dark level-chip active" data-level="all">
           <i class="bi bi-grid-fill"></i> Tous
         </button>
@@ -266,14 +266,14 @@
         </button>
       </div>
 
-      <div>
+      <div class="ms-auto">
         <button id="adminQuickBtn" class="btn btn-sm btn-gold-subtle" type="button">
-          <i class="bi bi-gear-fill me-1"></i>Gérer les formations
+          <i class="bi bi-gear-fill me-1"></i>Gérer
         </button>
       </div>
     </div>
 
-    <!-- ==================== TABLEAU STRUCTURÉ DU PLANNING ==================== -->
+    <!-- ==================== TABLEAU & CARTES MOBILES DU PLANNING ==================== -->
     <div id="planning-section" class="card card-soft mb-5 overflow-hidden">
       <div class="card-header bg-white border-bottom py-3 d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-2">
@@ -287,7 +287,8 @@
         </span>
       </div>
 
-      <div class="table-responsive">
+      <!-- VUE TABLEAU (DESKTOP & IMPRESSION PDF A4) -->
+      <div class="table-responsive d-none d-md-block" id="scheduleTableWrapper">
         <table class="table table-hover table-schedule align-middle">
           <thead>
             <tr>
@@ -304,6 +305,11 @@
             <!-- Rendu dynamique par JS -->
           </tbody>
         </table>
+      </div>
+
+      <!-- VUE CARTES MOBILES (SMARTPHONES : FLUIDE, ERGONOMIQUE ET SANS COUPE) -->
+      <div class="d-md-none p-3" id="scheduleMobileContainer">
+        <!-- Rendu dynamique par JS pour mobile -->
       </div>
     </div>
 
