@@ -1,0 +1,145 @@
+/* ========================================================
+   FEUILLE DE STYLE PERSONNALISÉE BOOTSTRAP 5
+   Emploi du temps des Formateurs — Servants de Messe
+   Paroisse Saint-Bernard d'Adiopodoumé
+   Responsable : DJEBLE Haniel
+   ======================================================== */
+
+:root {
+  --primary-navy: #0f172a;
+  --liturgical-gold: #c59b27;
+  --liturgical-gold-hover: #a88118;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+/* En-tête typographique */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.5px;
+}
+
+/* Navbar personnalisée */
+.navbar-custom {
+  background: var(--primary-navy) !important;
+  border-bottom: 3px solid var(--liturgical-gold);
+}
+
+.brand-logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--liturgical-gold);
+}
+
+/* Signature manuscrite élégante */
+.handwritten-signature {
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.3rem;
+  color: var(--primary-navy);
+  line-height: 1;
+  display: inline-block;
+  transform: rotate(-2deg);
+}
+
+/* Boutons or liturgique */
+.btn-gold {
+  background-color: var(--liturgical-gold);
+  border-color: var(--liturgical-gold);
+  color: #ffffff;
+  font-weight: 600;
+}
+.btn-gold:hover, .btn-gold:focus {
+  background-color: var(--liturgical-gold-hover);
+  border-color: var(--liturgical-gold-hover);
+  color: #ffffff;
+}
+
+/* Badges niveaux personnalisés */
+.badge-tarcisius {
+  background-color: #f3e8ff;
+  color: #7e22ce;
+  border: 1px solid #d8b4fe;
+}
+
+/* Table styling */
+.table-schedule th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: var(--primary-navy);
+  color: #ffffff;
+}
+
+.table-schedule td {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/* Cartes avec ombre douce */
+.card-soft {
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+/* ==================== STYLES D'IMPRESSION A4 OFFICIELLE ==================== */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10pt;
+  }
+  
+  .navbar-custom,
+  .no-print,
+  .btn,
+  .action-col,
+  .modal,
+  .toast,
+  footer {
+    display: none !important;
+  }
+
+  .print-only-header {
+    display: block !important;
+    text-align: center;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+
+  .card-soft {
+    border: 1px solid #000000 !important;
+    box-shadow: none !important;
+  }
+
+  .table-schedule th {
+    background-color: #f1f5f9 !important;
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+  }
+
+  .table-schedule td {
+    border: 1px solid #000000 !important;
+  }
+
+  .print-signatures {
+    display: flex !important;
+    justify-content: space-between;
+    margin-top: 36px;
+    padding-top: 16px;
+    border-top: 1px solid #000000;
+  }
+}
+
+.print-only-header,
+.print-signatures {
+  display: none;
+}

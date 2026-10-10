@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Emploi du temps officiel des formations des Servants de Messe de la Paroisse Saint-Bernard d'Adiopodoumé.">
+  <title>Emploi du Temps des Formations — Servants de Messe</title>
+  
+  <!-- BOOTSTRAP 5 CSS & ICONS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CUSTOM STYLES -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+  <!-- ==================== HEADER BOOTSTRAP ==================== -->
+  <header class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top py-2">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="logoservantdemesse.jpg" alt="Logo Servants de Messe" class="brand-logo-img">
+        <img src="logoeglise.jpeg" alt="Logo Paroisse Saint-Bernard" class="brand-logo-img">
+        <div class="ms-1">
+          <div class="font-cinzel fw-bold fs-6 text-white text-uppercase">Servants de Messe</div>
+          <div class="small text-secondary" style="font-size:0.75rem;">St-Bernard d'Adiopodoumé • Formation</div>
+        </div>
+      </a>
+
+      <!-- BOUTONS D'ACTIONS DANS LA NAVBAR -->
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <a href="../index.html" class="btn btn-outline-light btn-sm" title="Retour au site principal">
+          <i class="bi bi-house-door me-1"></i><span class="d-none d-md-inline">Accueil</span>
+        </a>
+        <button id="whatsappShareBtn" class="btn btn-success btn-sm" type="button" title="Partager sur WhatsApp">
+          <i class="bi bi-whatsapp me-1"></i><span class="d-none d-md-inline">WhatsApp</span>
+        </button>
+        <button id="printBtn" class="btn btn-light btn-sm" type="button" title="Imprimer ou enregistrer en PDF">
+          <i class="bi bi-printer me-1"></i><span class="d-none d-md-inline">Imprimer A4</span>
+        </button>
+        <button id="addSessionBtn" class="btn btn-gold btn-sm" type="button" style="display:none;">
+          <i class="bi bi-plus-circle me-1"></i>Nouvelle séance
+        </button>
+        <button id="adminLoginBtn" class="btn btn-outline-secondary btn-sm" type="button">
+          <i class="bi bi-shield-lock me-1"></i>Espace Responsable
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== EN-TÊTE D'IMPRESSION A4 OFFICIELLE ==================== -->
+  <div class="print-only-header">
+    <h2 class="font-cinzel fs-4 mb-1">PAROISSE SAINT-BERNARD D'ADIOPODOUMÉ</h2>
+    <p class="small text-muted mb-1">Groupe des Servants de Messe • Commission Formation</p>
+    <h3 class="fs-5 fw-bold text-uppercase mt-2 mb-1">EMPLOI DU TEMPS DES FORMATIONS DU SAMEDI</h3>
+    <p class="small text-secondary mb-0">Niveaux : Postulant • Samuel • Tarcisius • Augustin</p>
+  </div>
+
+  <main class="container py-4">
+
+    <!-- ==================== FICHE RESPONSABLE BOOTSTRAP (DJEBLE HANIEL) ==================== -->
+    <div class="card card-soft border-0 border-start border-4 border-warning bg-white mb-4">
+      <div class="card-body p-3 p-md-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+        <div class="d-flex align-items-center gap-3">
+          <div class="rounded-circle bg-warning-subtle text-warning-emphasis d-flex align-items-center justify-content-center flex-shrink-0" style="width:48px;height:48px;">
+            <i class="bi bi-person-check fs-4"></i>
+          </div>
+          <div>
+            <div class="d-flex align-items-center gap-2">
+              <h2 class="h5 fw-bold mb-0 text-dark">DJEBLE Haniel</h2>
+              <span class="badge bg-dark-subtle text-dark border rounded-pill small">Responsable Titulaire</span>
+            </div>
+            <p class="text-muted small mb-0 mt-1">
+              Responsable Chargé de la Formation liturgique • Contact direct : 
+              <a href="tel:+2250150252467" class="fw-bold text-decoration-none text-dark">
+                <i class="bi bi-telephone-fill text-success ms-1 me-1"></i>+225 01 50 25 24 67
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <!-- BLOC DE SIGNATURE OFFICIELLE -->
+        <div class="text-md-end border-top border-md-0 pt-2 pt-md-0">
+          <div class="text-uppercase small text-muted fw-bold" style="font-size:0.7rem; letter-spacing:0.5px;">Visa & Signature :</div>
+          <div class="handwritten-signature">DJEBLE Haniel</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SÉLECTEUR DE MOIS BOOTSTRAP ==================== -->
+    <div class="card card-soft border-0 bg-white mb-3">
+      <div class="card-body p-3 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+        <div class="d-flex align-items-center gap-2">
+          <button id="prevMonthBtn" class="btn btn-outline-secondary btn-sm" type="button">
+            <i class="bi bi-chevron-left me-1"></i>Mois précédent
+          </button>
+          <h3 id="currentMonthTitle" class="h5 fw-bold font-cinzel text-dark mb-0 px-3 text-center" style="min-width: 170px;">
+            Octobre 2026
+          </h3>
+          <button id="nextMonthBtn" class="btn btn-outline-secondary btn-sm" type="button">
+            Mois suivant<i class="bi bi-chevron-right ms-1"></i>
+          </button>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <label for="monthSelect" class="small fw-bold text-muted text-nowrap mb-0">Accès direct :</label>
+          <select id="monthSelect" class="form-select form-select-sm" style="width: auto;">
+            <!-- Rempli dynamiquement -->
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== FILTRES DES NIVEAUX (PILLS BOOTSTRAP) ==================== -->
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+      <div class="d-flex align-items-center gap-1 flex-wrap">
+        <span class="small fw-bold text-muted me-1">NIVEAUX :</span>
+        <button type="button" class="btn btn-sm btn-dark level-chip active" data-level="all">Tous</button>
+        <button type="button" class="btn btn-sm btn-outline-dark level-chip" data-level="postulant">Postulant</button>
+        <button type="button" class="btn btn-sm btn-outline-dark level-chip" data-level="samuel">Samuel</button>
+        <button type="button" class="btn btn-sm btn-outline-dark level-chip" data-level="tarcisius">Tarcisius</button>
+        <button type="button" class="btn btn-sm btn-outline-dark level-chip" data-level="augustin">Augustin</button>
+      </div>
+    </div>
+
+    <!-- ==================== TABLEAU STRUCTURÉ DU PLANNING ==================== -->
+    <div class="card card-soft border-0 bg-white mb-4 overflow-hidden">
+      <div class="card-header bg-white border-bottom py-3 d-flex align-items-center justify-content-between">
+        <h4 class="h6 fw-bold text-uppercase font-cinzel text-dark mb-0">
+          <i class="bi bi-calendar3 me-2 text-warning"></i>Programme officiel des Samedis
+        </h4>
+        <span class="badge bg-secondary-subtle text-secondary-emphasis" id="scheduleCount">0 séance programmée</span>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-hover table-schedule align-middle mb-0">
+          <thead>
+            <tr>
+              <th style="width: 18%;">Samedi</th>
+              <th style="width: 14%;">Horaire</th>
+              <th style="width: 12%;">Niveau</th>
+              <th style="width: 28%;">Thème & Enseignement</th>
+              <th style="width: 14%;">Formateur</th>
+              <th style="width: 10%;">Lieu</th>
+              <th class="action-col text-end" style="width: 4%;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleBody">
+            <!-- Rendu dynamique par JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== SECTION ENCADREMENT (DJEBLE HANIEL) ==================== -->
+    <div class="card card-soft border-0 bg-white mb-4">
+      <div class="card-body p-3 p-md-4">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h5 class="h6 fw-bold font-cinzel text-uppercase text-dark mb-0">
+            <i class="bi bi-people-fill me-2 text-warning"></i>Encadrement de la Formation
+          </h5>
+          <button id="addTrainerBtn" class="btn btn-outline-secondary btn-sm" type="button" style="display:none;">
+            <i class="bi bi-person-plus me-1"></i>Ajouter un formateur
+          </button>
+        </div>
+
+        <div id="trainersListContainer" class="row g-3">
+          <!-- Injecté dynamiquement par JS (DJEBLE Haniel par défaut) -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SIGNATURES OFFICIELLES D'IMPRESSION ==================== -->
+    <div class="print-signatures pt-4">
+      <div>
+        <p class="fw-bold mb-0">Le Responsable Chargé de la Formation</p>
+        <p class="small text-muted mb-2">Commission Liturgique des Servants de Messe</p>
+        <div class="handwritten-signature" style="font-size:2.5rem;">DJEBLE Haniel</div>
+        <p class="fw-bold mb-0">DJEBLE Haniel</p>
+        <p class="small text-muted">Tél : 01 50 25 24 67 • Paroisse Saint-Bernard d'Adiopodoumé</p>
+      </div>
+      <div class="text-end">
+        <p class="fw-bold mb-0">Vu et approuvé par le Curé</p>
+        <p class="small text-muted mb-5">Paroisse Saint-Bernard d'Adiopodoumé</p>
+        <br>
+        <p class="fw-bold mb-0">Le Curé de la Paroisse</p>
+        <p class="small text-muted">Signature & Sceau Paroissial</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== PIED DE PAGE ==================== -->
+  <footer class="bg-dark text-secondary py-4 mt-auto border-top border-secondary">
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-center text-md-start small">
+      <div>
+        <strong class="text-white">Paroisse Saint-Bernard d'Adiopodoumé</strong> — Commission Formation des Servants de Messe.<br>
+        Sous la responsabilité officielle de <strong class="text-white">DJEBLE Haniel</strong> (01 50 25 24 67).
+      </div>
+      <div>
+        <a href="../index.html" class="text-white text-decoration-none fw-semibold">
+          <i class="bi bi-arrow-left me-1"></i>Retourner au site principal
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALES BOOTSTRAP 5 ==================== -->
+
+  <!-- 1. MODAL ADMIN LOGIN -->
+  <div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title fw-bold text-dark fs-6" id="adminModalLabel">
+            <i class="bi bi-shield-lock me-2 text-warning"></i>Espace Responsable
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <form id="adminLoginForm">
+          <div class="modal-body p-4">
+            <p class="small text-muted mb-3">
+              Entrez le mot de passe d'administration pour planifier ou modifier les séances.
+            </p>
+            <div class="mb-3">
+              <label for="adminPassword" class="form-label small fw-bold">Mot de passe</label>
+              <input type="password" id="adminPassword" class="form-control" placeholder="••••••" required autofocus>
+              <div class="form-text text-muted" style="font-size:0.75rem;">Mot de passe par défaut : 200700</div>
+            </div>
+          </div>
+          <div class="modal-footer bg-light p-2">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-dark btn-sm px-3">Valider</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MODAL FORMULAIRE SÉANCE -->
+  <div class="modal fade" id="sessionModal" tabindex="-1" aria-labelledby="sessionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title fw-bold text-dark fs-6" id="sessionModalLabel">
+            <i class="bi bi-calendar-plus me-2 text-warning"></i><span id="sessionModalTitle">Planifier une séance de formation</span>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <form id="sessionForm">
+          <div class="modal-body p-4">
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="formDate" class="form-label small fw-bold">Date du Samedi *</label>
+                <input type="date" id="formDate" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label for="formLevel" class="form-label small fw-bold">Niveau des enfants *</label>
+                <select id="formLevel" class="form-select" required>
+                  <option value="Postulant">Postulant</option>
+                  <option value="Samuel">Samuel</option>
+                  <option value="Tarcisius">Tarcisius</option>
+                  <option value="Augustin">Augustin</option>
+                  <option value="Tous">Tous les niveaux réunis</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="formStartTime" class="form-label small fw-bold">Heure de début *</label>
+                <input type="time" id="formStartTime" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label for="formEndTime" class="form-label small fw-bold">Heure de fin *</label>
+                <input type="time" id="formEndTime" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="formTopic" class="form-label small fw-bold">Thème / Enseignement du jour *</label>
+              <input type="text" id="formTopic" class="form-control" placeholder="Ex: Service de l'autel, encensoir et burettes" required>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="formTrainer" class="form-label small fw-bold">Formateur responsable *</label>
+                <select id="formTrainer" class="form-select" required>
+                  <!-- Rempli dynamiquement -->
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="formLocation" class="form-label small fw-bold">Lieu</label>
+                <input type="text" id="formLocation" class="form-control" placeholder="Ex: Église, Sacristie, Cour" value="Église paroissiale">
+              </div>
+            </div>
+
+            <div class="mb-0">
+              <label for="formObjectives" class="form-label small fw-bold">Objectifs pédagogiques / Consignes</label>
+              <textarea id="formObjectives" class="form-control" rows="2" placeholder="Ex: Exercices pratiques au sanctuaire, récitation de la prière..."></textarea>
+            </div>
+          </div>
+          <div class="modal-footer bg-light p-2">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-dark btn-sm px-3">Enregistrer la séance</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. MODAL AJOUT FORMATEUR -->
+  <div class="modal fade" id="trainerModal" tabindex="-1" aria-labelledby="trainerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 440px;">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title fw-bold text-dark fs-6" id="trainerModalLabel">
+            <i class="bi bi-person-plus me-2 text-warning"></i>Ajouter un encadrant formateur
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <form id="trainerForm">
+          <div class="modal-body p-4">
+            <div class="mb-3">
+              <label for="trainerName" class="form-label small fw-bold">Nom et prénom *</label>
+              <input type="text" id="trainerName" class="form-control" placeholder="Ex: Jean Kouassi" required>
+            </div>
+            <div class="mb-3">
+              <label for="trainerRole" class="form-label small fw-bold">Rôle liturgique</label>
+              <input type="text" id="trainerRole" class="form-control" placeholder="Ex: Formateur Adjoint">
+            </div>
+            <div class="mb-0">
+              <label for="trainerTel" class="form-label small fw-bold">Numéro de téléphone</label>
+              <input type="tel" id="trainerTel" class="form-control" placeholder="Ex: +225 07 XX XX XX XX">
+            </div>
+          </div>
+          <div class="modal-footer bg-light p-2">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-dark btn-sm px-3">Ajouter</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. MODAL WHATSAPP -->
+  <div class="modal fade" id="whatsappModal" tabindex="-1" aria-labelledby="whatsappModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title fw-bold text-dark fs-6" id="whatsappModalLabel">
+            <i class="bi bi-whatsapp me-2 text-success"></i>Message officiel WhatsApp
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="small text-muted mb-2">
+            Ce message pré-formaté est prêt à être partagé avec les parents et les servants :
+          </p>
+          <textarea id="whatsappPreview" class="form-control font-monospace small bg-light" rows="10" readonly></textarea>
+        </div>
+        <div class="modal-footer bg-light p-2">
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-outline-dark btn-sm" id="copyWhatsAppTextBtn">
+            <i class="bi bi-clipboard me-1"></i>Copier
+          </button>
+          <button type="button" class="btn btn-success btn-sm" id="openWhatsAppAppBtn">
+            <i class="bi bi-whatsapp me-1"></i>Ouvrir WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION BOOTSTRAP -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast align-items-center text-bg-dark border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastMessage">
+          Notification
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Fermer"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOTSTRAP 5 BUNDLE JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- LOGIQUE DE L'APPLICATION -->
+  <script src="app.js"></script>
+</body>
+</html>
